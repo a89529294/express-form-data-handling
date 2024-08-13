@@ -1,0 +1,36 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Results</title>
+</head>
+
+<body>
+    <%- include("partials/errors.ejs") %>
+    <h1>search results</h1>
+    <ul>
+        <% if (locals.users) {%>
+        <% users.forEach(user => { %>
+        <li>
+            ID: <%= user.id %>, Name: <%= user.firstName %> <%= user.lastName %>, Email: <%= user.email %>, Age:
+            <%= user.age %>, Bio: <%= user.bio %>
+        </li>
+        <% }); %>
+        <% } %>
+    </ul>
+
+    <br />
+
+    <h2>search users</h2>
+    <form action="/search" method="GET">
+        <label for="name">Search by name:</label>
+        <input type="text" name="name" id="name" placeholder="user name">
+        <button type="submit">Search</button>
+    </form>
+
+    <br />
+    <a href="/">Back to home</a>
+</body>
+
+</html>
